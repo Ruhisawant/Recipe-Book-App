@@ -60,28 +60,37 @@ class HomeScreen extends StatelessWidget {
     ];
 
     return Scaffold(
-      appBar: AppBar(title: const Text('Recipe Book')),
-      body: ListView.builder(
-        itemCount: recipes.length,
-        itemBuilder: (context, index) {
-          return ListTile(
-            leading: const Icon(Icons.restaurant_menu),
-            title: Text(recipes[index]['title']!),
-            trailing: const Icon(Icons.arrow_forward),
-            onTap: () {
-              Navigator.push(
-                context,
-                MaterialPageRoute(
-                  builder: (context) => DetailsScreen(
-                    title: recipes[index]['title']!,
-                    ingredients: recipes[index]['ingredients']!,
-                    instructions: recipes[index]['instructions']!,
-                  ),
+      appBar: AppBar(title: const Text('Recipe Book'), backgroundColor: Colors.redAccent),
+      body: Padding(
+        padding: const EdgeInsets.all(80.0),
+        child: ListView.builder(
+          itemCount: recipes.length,
+          itemBuilder: (context, index) {
+            return Padding(
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              child: ListTile(
+                leading: const Icon(Icons.restaurant_menu, color: Colors.black),
+                title: Text(
+                  recipes[index]['title']!,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
-              );
-            },
-          );
-        },
+                trailing: const Icon(Icons.arrow_forward, color: Colors.black),
+                onTap: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => DetailsScreen(
+                        title: recipes[index]['title']!,
+                        ingredients: recipes[index]['ingredients']!,
+                        instructions: recipes[index]['instructions']!,
+                      ),
+                    ),
+                  );
+                },
+              ),
+            );
+          },
+        ),
       ),
     );
   }
