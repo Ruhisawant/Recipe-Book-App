@@ -6,7 +6,7 @@ class DetailsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: const Text('Details Screen')),
+      appBar: AppBar(title: const Text('Recipe Details'), backgroundColor: Colors.orangeAccent),
       body: Center(
         child: ElevatedButton(
           onPressed: () {
